@@ -10,36 +10,34 @@
 using namespace std;
 
 
-void solution(vector<long long int> &A, long long int n) {
+void solution(vector<long long int> &A, long long int x) {
     long long int sum = 0;
     long long int Lsum = 0;
     long long int Rsum = 0;
     int counter = 0;
     int n = A.size();
     
-    if(n <= 1){
-        cout<<0<<endl;
-        break;
-    }
+    if(n <= 1) cout<<0<<endl;
     
-    for(int j = 0; j < n; j++){
-        sum += A[j];
-    }
-    
-    for(int i = 0; i < n; i++){
-        Rsum = sum - Lsum - (long long int)A[i];
-        if(Lsum == Rsum){
-            cout<<i<<endl;
-            counter++;
+    else{
+        for(int j = 0; j < n; j++){
+            sum += A[j];
         }
+    
+        for(int i = 0; i < n; i++){
+            Rsum = sum - Lsum - (long long int)A[i];
+            if(Lsum == Rsum){
+                cout<<i<<endl;
+                counter++;
+            }
         
-        Lsum += A[i];
+            Lsum += A[i];
+        }
     }
     
-    if(counter == 0){
+    if(counter == 0 && n > 1){
         cout<<-1<<endl;
     }
-    return 0;
 }
     
     int main() {
@@ -51,7 +49,7 @@ void solution(vector<long long int> &A, long long int n) {
             a.push_back(integer);
         }
         
-        solution(a, n)
+        solution(a, n);
         
         return 0;
     }
